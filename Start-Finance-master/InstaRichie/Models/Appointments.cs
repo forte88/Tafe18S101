@@ -25,7 +25,7 @@ namespace StartFinance.Models
         public string StartTime { get; set; }
 
      
-        public double EndTime { get; set; }
+        public string EndTime { get; set; }
 
     }
 }
