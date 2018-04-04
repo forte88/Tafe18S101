@@ -139,7 +139,7 @@ namespace StartFinance.Views
 
                 });
 
-
+                editID = -1; // this should reset the edit check back to zero
 
             } else
             {
