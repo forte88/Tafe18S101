@@ -121,8 +121,8 @@
     <Compile Include="Views\AssetsPage.xaml.cs">
       <DependentUpon>AssetsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PersonalInfo.xaml.cs">
-      <DependentUpon>PersonalInfo.xaml</DependentUpon>
+    <Compile Include="Views\PersonalInfoPage.xaml.cs">
+      <DependentUpon>PersonalInfoPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Busy.xaml.cs">
       <DependentUpon>Busy.xaml</DependentUpon>
@@ -194,7 +194,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PersonalInfo.xaml">
+    <Page Include="Views\PersonalInfoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
