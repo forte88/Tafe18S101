@@ -10,16 +10,18 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:StartFinance.ViewModels"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Loaded="Page_Loaded">
 
     <Page.Resources>
         <DataTemplate x:Key="ContactDetailsListView">
             <Grid>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{Binding ContactID}" Padding="0,0,15,0"/>
+                    <TextBlock Text="{Binding ContactID}" Padding="0,0,15,0" FontStyle="Oblique"/>
                     <TextBlock Text="{Binding FirstName}" Padding="0,0,15,0"/>
                     <TextBlock Text="{Binding LastName}" Padding="0,0,15,0"/>
-
+                    <TextBlock Text="{Binding CompanyName}" Padding="0,0,15,0"/>
+                    <TextBlock Text="{Binding CompanyPhone}" Padding="0,0,15,0"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -78,9 +80,9 @@
 
             <!--  secondary commands  -->
             <controls:PageHeader.PrimaryCommands>
-              <!--<AppBarButton Icon="Add" Label="Add" Click="AddDetails" />
+                <AppBarButton Icon="Add" Label="Add" Click="AddDetails" />
                 <AppBarButton Icon="edit" Label="Edit" Click="EditDetails"/>
-                <AppBarButton Icon="Delete" Label="Delete" Click="DelDetails"/> -->
+                <AppBarButton Icon="Delete" Label="Delete" Click="DelDetails"/>
 
             </controls:PageHeader.PrimaryCommands>
         </controls:PageHeader>
@@ -99,14 +101,13 @@
                     <StackPanel x:Name="PageStart" Grid.Row="0" VerticalAlignment="Top"
                         HorizontalAlignment="Stretch"
                         Orientation="Vertical" Margin="10,5,10,0" Height="475" Grid.RowSpan="2">
-                        <TextBox x:Name="contactID" Header="Contact ID" PlaceholderText="Enter your Contact ID" TextWrapping="Wrap"/>
                         <TextBox x:Name="firstName" Header="First Name" PlaceholderText="Enter your First Name" TextWrapping="Wrap"/>
                         <TextBox x:Name="lastName" Header="Last Name" PlaceholderText="Enter your Last Name" TextWrapping="Wrap"/>
                         <TextBox x:Name="companyName" Header="CompanyName" PlaceholderText="Enter your Company Name" TextWrapping="Wrap"/>
                         <TextBox x:Name="companyPhone" Header="Mobile Number" PlaceholderText="Enter your Mobile Number" TextWrapping="Wrap"/>
                     </StackPanel>
                     <ListView x:Name="ContactDetailsList" Grid.Row="1" ItemTemplate="{StaticResource ContactDetailsListView}"
-                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,80,0,158">
+                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,80,0,106" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2">
                         <RelativePanel.Below>PageStart</RelativePanel.Below>
                     </ListView>
                 </Grid>
