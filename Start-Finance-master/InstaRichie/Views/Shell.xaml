@@ -99,7 +99,7 @@
                 </StackPanel>
             </Controls:HamburgerButtonInfo>
             <!--  Personal Info button  -->
-            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:PersonalInfo" 
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:PersonalInfoPage" 
                                           AutomationProperties.Name="Jerry"
                                           >
                 <StackPanel Orientation="Horizontal">

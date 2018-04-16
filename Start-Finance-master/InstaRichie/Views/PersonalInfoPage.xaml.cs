@@ -77,7 +77,7 @@ namespace StartFinance.Views
                 try
                 {
                     int PersonalID = ((PersonalInfo)PersonalInfoList.SelectedItem).PersonalID;
-                    var querydel = conn.Query<PersonalInfo>("DELETE FROM PersonalInfo WHERE ID='" + PersonalID + "'");
+                    var querydel = conn.Query<PersonalInfo>("DELETE FROM PersonalInfo WHERE PersonalID='" + PersonalID + "'");
                     Results();
                 }
                 catch (NullReferenceException)
@@ -94,7 +94,7 @@ namespace StartFinance.Views
 
 
         //Add Personal Info
-        private async void AddInfo(object sender, RoutedEventArgs e)
+        private void AddInfo(object sender, RoutedEventArgs e)
         {
             // building the data elements to add to the database
 
@@ -102,20 +102,18 @@ namespace StartFinance.Views
 
             string PMonth = dob.Date.Value.Month.ToString();
             string PYear = dob.Date.Value.Year.ToString();
+            
             string extra = "";
             if (int.Parse(PDay) < 10)
             {
                 extra = "0";
             }
-
-
             string FinalDOB = extra + PDay + "/" + PMonth + "/" + PYear;
-
-            string FName = firstName.ToString();
-            string LName = lastName.ToString();
-            string PersonGender = gender.ToString();
-            string PersonalEmail = email.ToString();
-            string Phone = personalPhone.ToString();
+            string FName = firstName.Text.ToString();
+            string LName = lastName.Text.ToString();
+            string PersonGender = gender.Text.ToString();
+            string PersonalEmail = email.Text.ToString();
+            string Phone = personalPhone.Text.ToString();
 
             if (editID != -1)
             {
@@ -138,7 +136,6 @@ namespace StartFinance.Views
             {
                 conn.Insert(new PersonalInfo()
                 {
-                    PersonalID = editID,
                     FirstName = FName,
                     LastName = LName,
                     DOB = FinalDOB,
@@ -165,7 +162,7 @@ namespace StartFinance.Views
             {
 
 
-                string DateToParse = ((PersonalInfo)PersonalInfoList.SelectedItem).DOB + " 12:00:00 AM";
+                string DateToParse = ((PersonalInfo)PersonalInfoList.SelectedItem).DOB;
 
 
 
