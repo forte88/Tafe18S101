@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="StartFinance.Views.ShoppingList"
+    x:Class="StartFinance.Views.ShoppingListPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:Behaviors="using:Template10.Behaviors"

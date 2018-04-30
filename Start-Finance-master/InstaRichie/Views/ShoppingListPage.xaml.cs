@@ -23,13 +23,13 @@ namespace StartFinance.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ShoppingList : Page
+    public sealed partial class ShoppingListPage : Page
     {
 
         SQLiteConnection conn; // adding an SQLite connection
         string path = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "Findata.sqlite");
 
-        public ShoppingList()
+        public ShoppingListPage()
         {
             this.InitializeComponent();
             NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
@@ -86,8 +86,7 @@ namespace StartFinance.Views
                     double tempQuoted = Convert.ToDouble(priceQuotedTxt.Text);
                     conn.CreateTable<ShoppingList>();
                     conn.Insert(new ShoppingList
-                    {
-                        ShoppingItemID = shoppingItemIDTxt.Text.ToString(),
+                    {                        
                         ShopName = shopNameTxt.Text.ToString(),
                         NameOfItem = nameOfItemTxt.Text.ToString(),
                         ShoppingDate = theDate,
@@ -120,7 +119,7 @@ namespace StartFinance.Views
         {
             try
             {
-                string AccSelection = ((ShoppingList)ShoppingListView.SelectedItem).ShoppingItemID;
+                string AccSelection = ((ShoppingList)ShoppingListView.SelectedItem).ShopName;
                 if (AccSelection == "")
                 {
                     MessageDialog dialog = new MessageDialog("Not selected the Item", "Oops..!");
@@ -128,10 +127,10 @@ namespace StartFinance.Views
                 }
                 else
                 {
-                    conn.CreateTable<WishList>();
-                    var query1 = conn.Table<WishList>();
-                    var query3 = conn.Query<WishList>("DELETE FROM WishList WHERE WishName ='" + AccSelection + "'");
-                    WishListView.ItemsSource = query1.ToList();
+                    conn.CreateTable<ShoppingList>();
+                    var query1 = conn.Table<ShoppingList>();
+                    var query3 = conn.Query<ShoppingList>("DELETE FROM ShoppingList WHERE ShoppingList ='" + AccSelection + "'");
+                    ShoppingListView.ItemsSource = query1.ToList();
                 }
             }
             catch (NullReferenceException)
