@@ -12,22 +12,22 @@
     Loaded="Page_Loaded"
     xmlns:vm="using:StartFinance.ViewModels" mc:Ignorable="d">
 
-    <Page.DataContext>
-        <vm:MainPageViewModel x:Name="ViewModel" />
-    </Page.DataContext>
-
     <Page.Resources>
-        <DataTemplate x:Key="AccountSelectionData">
+        <DataTemplate x:Key="AppointmentsListView">
             <Grid>
                 <StackPanel>
-                    <TextBlock>
-                        <Run Text="{Binding AccountName}"/>
-                        <Run Text="{Binding InitialAmount}"/>
-                    </TextBlock>
+                    <TextBlock  Text="{Binding EventName}" Padding="0,0,20,0"/>
+                    <TextBlock  Text="{Binding EventDate}" Padding="0,0,0,0" FontSize="9"/>
+                    <TextBlock  Text="{Binding Location}" Margin="0,0,0,20" FontSize="9" VerticalAlignment="Top" />
+
                 </StackPanel>
             </Grid>
         </DataTemplate>
     </Page.Resources>
+
+    <Page.DataContext>
+        <vm:MainPageViewModel x:Name="ViewModel" />
+    </Page.DataContext>
 
     <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -81,15 +81,15 @@
                              RelativePanel.AlignBottomWithPanel="True">
 
             <!--  secondary commands  -->
-          
-            
+
+
             <controls:PageHeader.PrimaryCommands>
                 <AppBarButton Icon="Add" Label="Add Appointment" Click="AddAppointment"/>
-       
+
             </controls:PageHeader.PrimaryCommands>
 
         </controls:PageHeader>
-        
+
         <controls:PageHeader x:Name="InternFooter" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignBottomWithPanel="True">
@@ -98,10 +98,11 @@
             <controls:PageHeader.PrimaryCommands>
                 <AppBarButton Icon="Edit" Label="Edit" Click="EditAppointment"/>
                 <AppBarButton Icon="Add" Label="Add" Click="AddAppointment"/>
+                <AppBarButton Icon="Delete" Label="Delete" Click="DelAppointment"/>
             </controls:PageHeader.PrimaryCommands>
 
 
-       
+
 
 
         </controls:PageHeader>
@@ -111,19 +112,26 @@
             <RelativePanel.Below>pageHeader</RelativePanel.Below>
             <PivotItem Header="Appointments">
                 <Grid>
-                    <StackPanel Grid.Row="1" VerticalAlignment="Top" Orientation="Vertical" Margin="10,5,10,0">
+                  
+                    <StackPanel VerticalAlignment="Top" Orientation="Vertical" Margin="10,5,10,0" Grid.ColumnSpan="3">
                         <TextBox x:Name="EventName" Header="Appointment Name" PlaceholderText=" " TextWrapping="Wrap" InputScope="Number"/>
                         <TextBox x:Name="EventLocation" Header="Location" PlaceholderText=" " TextWrapping="Wrap" InputScope="Number"/>
                         <CalendarDatePicker x:Name="EventDate" Header="Date" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                         <TimePicker x:Name="StartTime" Header="Start Time" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Time="9:0:0" />
                         <TimePicker x:Name="EndTime" Header="End Time" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Time="12:0:0" />
 
-                       
-                       
+
+
                     </StackPanel>
+                    <ListView x:Name="AppointmentList" ItemTemplate="{StaticResource AppointmentsListView}"
+                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,400,0,-10">
+                        <RelativePanel.Below>PageStart</RelativePanel.Below>
+                    </ListView>
+
                 </Grid>
             </PivotItem>
-      
+
         </Pivot>
+        
     </RelativePanel>
 </Page>
