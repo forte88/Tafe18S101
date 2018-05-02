@@ -9,7 +9,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="using:StartFinance.Views"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      
+      Loaded="Page_Loaded"
       xmlns:vm="using:StartFinance.ViewModels" mc:Ignorable="d">
 
     <Page.DataContext>
@@ -17,14 +17,14 @@
     </Page.DataContext>
 
     <Page.Resources>
-        <DataTemplate x:Key="ShoppingListDataViews">
+        <DataTemplate x:Key="ShoppingListDataView">
             <Grid>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{Binding shoppingItemIDTxt}" Padding="0,0,15,0"/>
-                    <TextBlock Text="{Binding shopNameTxt}"/>
-                    <TextBlock Text="{Binding nameOfItemTxt}"/>
-                    <TextBlock Text="{Binding shopingDatePicker}"/>
-                    <TextBlock Text="{Binding priceQuotedTxt}"/>
+                    <TextBlock Text="{Binding ShoppingItemID}" Padding="0,0,15,0"/>
+                    <TextBlock Text="{Binding ShopName}" Padding="0,0,15,0"/>
+                    <TextBlock Text="{Binding NameOfItem}" Padding="0,0,15,0"/>
+                    <TextBlock Text="{Binding ShoppingDate}" Padding="0,0,15,0"/>
+                    <TextBlock Text="{Binding PriceQuote}" Padding="0,0,15,0"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -85,8 +85,8 @@
                              RelativePanel.AlignBottomWithPanel="True">
             <!--primary commands-->
             <controls:PageHeader.PrimaryCommands>
-                <AppBarButton Icon="Add" Label="Add ShoppingList" />
-                <AppBarButton Icon="Delete" Label="Delete ShoppingList"/>
+                <AppBarButton Icon="Add" Label="Add ShoppingList" Click="AddShop_Click"/>
+                <AppBarButton Icon="Delete" Label="Delete ShoppingList" Click="DeleteItem_Click"/>
             </controls:PageHeader.PrimaryCommands>
         </controls:PageHeader>
 
@@ -103,7 +103,6 @@
                     <StackPanel Grid.Row="0"
                             Orientation="Vertical" VerticalAlignment="Stretch"
                             HorizontalAlignment="Stretch" Margin="0,0,0,194" Grid.RowSpan="2">
-                        <TextBox x:Name="shoppingItemIDTxt" PlaceholderText="0" Header="Item ID" InputScope="Number"/>
                         <TextBox x:Name="shopNameTxt" PlaceholderText="ShopName" Header="Shop Name"/>
                         <TextBox x:Name="nameOfItemTxt" PlaceholderText="ItemName" Header="Item Name"/>
                         <CalendarDatePicker x:Name="shopingDatePicker" Header="Date" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
@@ -112,8 +111,8 @@
                     <ListView x:Name="ShoppingListView" Grid.Row="1"
                               HorizontalAlignment="Stretch"
                               VerticalAlignment="Stretch"
-                              ItemTemplate="{StaticResource ShoppingListDataViews}" Margin="0,152,0,0">
-                        <RelativePanel.Below>pageStart</RelativePanel.Below>
+                              ItemTemplate="{StaticResource ShoppingListDataView}" Margin="0,152,0,0">
+                        <RelativePanel.Below>PageStart</RelativePanel.Below>
                     </ListView>
                 </Grid>
             </PivotItem>

@@ -55,12 +55,7 @@ namespace StartFinance.Views
 
             try
             {
-                if (shoppingItemIDTxt.Text.ToString() == "")
-                {
-                    MessageDialog dialog = new MessageDialog("Please Enter ID");
-                    await dialog.ShowAsync();
-                }
-                else if (shopNameTxt.Text.ToString() == "")
+                if (shopNameTxt.Text.ToString() == "")
                 {
                     MessageDialog dialog = new MessageDialog("Please Enter the Shops Name");
                     await dialog.ShowAsync();
@@ -91,8 +86,8 @@ namespace StartFinance.Views
                         NameOfItem = nameOfItemTxt.Text.ToString(),
                         ShoppingDate = theDate,
                         PriceQuote = tempQuoted
-                    });               
-
+                    });
+                    Results();
                 }
             }
             catch (Exception ex)
@@ -119,8 +114,8 @@ namespace StartFinance.Views
         {
             try
             {
-                string AccSelection = ((ShoppingList)ShoppingListView.SelectedItem).ShopName;
-                if (AccSelection == "")
+                int AccSelection = ((ShoppingList)ShoppingListView.SelectedItem).ShoppingItemID;
+                if (AccSelection == 0)
                 {
                     MessageDialog dialog = new MessageDialog("Not selected the Item", "Oops..!");
                     await dialog.ShowAsync();
@@ -129,7 +124,7 @@ namespace StartFinance.Views
                 {
                     conn.CreateTable<ShoppingList>();
                     var query1 = conn.Table<ShoppingList>();
-                    var query3 = conn.Query<ShoppingList>("DELETE FROM ShoppingList WHERE ShoppingList ='" + AccSelection + "'");
+                    var query3 = conn.Query<ShoppingList>("DELETE FROM ShoppingList WHERE ShoppingItemID ='" + AccSelection + "'");
                     ShoppingListView.ItemsSource = query1.ToList();
                 }
             }
