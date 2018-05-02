@@ -107,7 +107,7 @@
                         <TextBox x:Name="companyPhone" Header="Mobile Number" PlaceholderText="Enter your Mobile Number" TextWrapping="Wrap"/>
                     </StackPanel>
                     <ListView x:Name="ContactDetailsList" Grid.Row="1" ItemTemplate="{StaticResource ContactDetailsListView}"
-                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,80,0,106" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2">
+                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,100,0,106" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2">
                         <RelativePanel.Below>PageStart</RelativePanel.Below>
                     </ListView>
                 </Grid>
